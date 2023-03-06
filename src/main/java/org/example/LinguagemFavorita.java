@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class LinguagemFavorita<T> implements Comparable<T> {
+public class LinguagemFavorita implements Comparable<LinguagemFavorita> {
     String nome;
     int anoDeCriacao;
     String ide;
@@ -13,18 +13,25 @@ public class LinguagemFavorita<T> implements Comparable<T> {
         this.ide = ide;
     }
 
-    public LinguagemFavorita(String nome, int anoDeCriacao) {
-        this.nome = nome;
-        this.anoDeCriacao = anoDeCriacao;
-    }
     public LinguagemFavorita(String nome, String ide) {
         this.nome = nome;
         this.ide = ide;
     }
+
     public LinguagemFavorita(int anoDeCriacao, String ide) {
         this.anoDeCriacao = anoDeCriacao;
         this.ide = ide;
     }
+
+    public LinguagemFavorita(String nome, int anoDeCriacao) {
+        this.nome = nome;
+        this.anoDeCriacao = anoDeCriacao;
+    }
+
+    public LinguagemFavorita(String nome) {
+        this.nome = nome;
+    }
+
     public LinguagemFavorita() {
         super();
     }
@@ -75,13 +82,10 @@ public class LinguagemFavorita<T> implements Comparable<T> {
                 '}';
     }
 
-    public int compareTo(LinguagemFavorita ling) {
-        int nomeComp = this.getNome().compareTo(ling.getNome());
-        return nomeComp;
-    }
 
     @Override
-    public int compareTo(T o) {
-        return 0;
+    public int compareTo(LinguagemFavorita o) {
+        int nome = this.getNome().compareTo(o.getNome());
+        return nome;
     }
 }

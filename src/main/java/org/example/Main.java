@@ -88,10 +88,11 @@ public class Main {
         System.out.println("\n");
 
 
-        Set<LinguagemFavorita> linguagens = new LinkedHashSet<>(){{
-            add(new LinguagemFavorita<>("Java", 1998, "IntelliJ"));
+        Set<LinguagemFavorita> linguagens = new TreeSet<>(){{
+            add(new LinguagemFavorita("Java", 1998, "IntelliJ"));
             add(new LinguagemFavorita("Python", 2007, "Pycharm"));
             add(new LinguagemFavorita("Javascript", 2002, "WebStorm"));
+            add(new LinguagemFavorita("C++", 1992, "Notepad++"));
         }};
 
         Iterator<LinguagemFavorita> iterator4 = linguagens.iterator();
@@ -99,6 +100,10 @@ public class Main {
         while(iterator4.hasNext()){
             System.out.println(iterator4.next());
         }
+
+        System.out.println("\n");
+
+        for(LinguagemFavorita ling: linguagens) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
 
 
     }
