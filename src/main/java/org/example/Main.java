@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -87,5 +84,14 @@ public class Main {
         conj.removeAll(conj);
 
         System.out.println(conj);
+
+
+        Set<LinguagemFavorita> linguagens = new HashSet<>(){{
+            add(new LinguagemFavorita<>("Java", 1998, "IntelliJ"));
+            add(new LinguagemFavorita("Python", 2007, "Pycharm"));
+            add(new LinguagemFavorita("Javascript", 2002, "WebStorm"));
+        }};
+
+
     }
 }
