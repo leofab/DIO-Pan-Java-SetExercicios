@@ -66,6 +66,14 @@ public class LinguagemFavorita<T> implements Comparable<T> {
         return Objects.hash(nome, anoDeCriacao, ide);
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "nome='" + nome + '\'' +
+                ", anoDeCriacao=" + anoDeCriacao +
+                ", ide='" + ide + '\'' +
+                '}';
+    }
 
     public int compareTo(LinguagemFavorita ling) {
         int nomeComp = this.getNome().compareTo(ling.getNome());

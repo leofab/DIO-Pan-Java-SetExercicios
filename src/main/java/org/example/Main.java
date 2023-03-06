@@ -85,12 +85,20 @@ public class Main {
 
         System.out.println(conj);
 
+        System.out.println("\n");
 
-        Set<LinguagemFavorita> linguagens = new HashSet<>(){{
+
+        Set<LinguagemFavorita> linguagens = new LinkedHashSet<>(){{
             add(new LinguagemFavorita<>("Java", 1998, "IntelliJ"));
             add(new LinguagemFavorita("Python", 2007, "Pycharm"));
             add(new LinguagemFavorita("Javascript", 2002, "WebStorm"));
         }};
+
+        Iterator<LinguagemFavorita> iterator4 = linguagens.iterator();
+
+        while(iterator4.hasNext()){
+            System.out.println(iterator4.next());
+        }
 
 
     }
