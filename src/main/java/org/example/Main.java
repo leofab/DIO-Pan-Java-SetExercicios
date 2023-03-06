@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 public class Main {
@@ -16,7 +17,7 @@ public class Main {
         conj.add("azul-escuro");
         conj.add("violeta");
 
-        System.out.println(conj);
+        System.out.println(conj + "\n");
 
         // Exiba todas as cores uma abaixo da outra
 
@@ -25,13 +26,66 @@ public class Main {
         while(iterate.hasNext()) {
             System.out.println(iterate.next());
         }
+        System.out.println("\n");
 
         // A quantidade de cores que o arco-íris tem
 
-        System.out.println(conj.size());
+        System.out.println(conj.size() + "\n");
 
         // Exiba as cores na ordem inversa que foi informada
 
+        LinkedList<String> reverseList = new LinkedList<>(conj);
 
+        Iterator<String> reverseIterate = reverseList.descendingIterator();
+
+        while(reverseIterate.hasNext()){
+            System.out.println(reverseIterate.next());
+        }
+
+        System.out.println("\n");
+
+        // Exiba todas as cores que começam com a letra "v"
+
+        Iterator<String> iterate2 = conj.iterator();
+
+        while(iterate2.hasNext()){
+            String letra = iterate2.next();
+            char l = letra.charAt(0);
+            String compare = Character.toString(l);
+            if(compare.compareTo("v") == 0) {
+                System.out.println(letra);
+            }
+        }
+
+        System.out.println("\n");
+
+        // Remova todas as cores que não começam com a letra "v"
+
+        Iterator<String> iterate3 = conj.iterator();
+
+        Set<String> newConj = new LinkedHashSet<>();
+
+        while(iterate3.hasNext()){
+            String letra = iterate3.next();
+            char l = letra.charAt(0);
+            String compare = Character.toString(l);
+            if(compare.compareTo("v") != 0) {
+                newConj.add(letra);
+            }
+        }
+
+        System.out.println(newConj);
+
+        System.out.println("\n");
+
+        System.out.println(conj.removeAll(newConj));
+
+        System.out.println("\n");
+
+        System.out.println(conj);
+
+        conj.removeAll(conj);
+
+        System.out.println(conj);
     }
 }
