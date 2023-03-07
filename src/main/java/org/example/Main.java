@@ -134,8 +134,24 @@ public class Main {
 
         for(LinguagemFavorita ling: linguagensNome) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
 
+        // Ordenar por IDE
+
+        System.out.println("Exibir por IDE \n");
+
+        Set<LinguagemFavorita> linguagensIDE = new TreeSet<>(new ComparetoIDE());
+
+
 
     }
 
 
+}
+
+class ComparetoIDE implements Comparator<LinguagemFavorita>{
+
+    @Override
+    public int compare(LinguagemFavorita o1, LinguagemFavorita o2) {
+        int compareIde = o1.getIde().compareTo(o2.getIde());
+        return compareIde;
+    }
 }
