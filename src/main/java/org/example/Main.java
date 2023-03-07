@@ -157,6 +157,13 @@ public class Main {
         System.out.println("Exibindo ordenado por ano/nome \n");
         for(LinguagemFavorita ling: linguagensAnoNome) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
 
+        System.out.println("\n Exibir por nome ano e IDE \n");
+
+        Set<LinguagemFavorita> linguagensNomeAnoIDE = new TreeSet<>(new ComparetoNomeAnoIDE());
+        linguagensNomeAnoIDE.addAll(linguagens);
+        System.out.println("Exibindo por nome ano ide \n");
+        for(LinguagemFavorita ling: linguagensNomeAnoIDE) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
+
     }
 
 
@@ -181,5 +188,20 @@ class ComparetoAnoNome implements Comparator<LinguagemFavorita>{
         int nome = o1.getNome().compareTo(o2.getNome());
         return nome;
 
+    }
+}
+
+class ComparetoNomeAnoIDE implements Comparator<LinguagemFavorita>{
+
+    @Override
+    public int compare(LinguagemFavorita o1, LinguagemFavorita o2) {
+        int nome = o1.getNome().compareTo(o2.getNome());
+        if(nome != 0) return nome;
+
+        int ano = Integer.compare(o1.getAnoDeCriacao(), o2.getAnoDeCriacao());
+        if(ano != 0) return ano;
+
+        int ide = o1.getIde().compareTo(o2.getIde());
+        return ide;
     }
 }
