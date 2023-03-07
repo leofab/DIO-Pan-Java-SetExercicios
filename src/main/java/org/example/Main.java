@@ -134,13 +134,28 @@ public class Main {
 
         for(LinguagemFavorita ling: linguagensNome) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
 
+        System.out.println("\n");
         // Ordenar por IDE
 
         System.out.println("Exibir por IDE \n");
 
         Set<LinguagemFavorita> linguagensIDE = new TreeSet<>(new ComparetoIDE());
+        linguagensIDE.addAll(linguagens);
 
+        System.out.println("Exibindo a Set linguagensIDE \n");
+        System.out.println(linguagensIDE + "\n");
 
+        System.out.println("Exibindo ordenado por IDE \n");
+
+        for(LinguagemFavorita ling: linguagensIDE) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
+
+        System.out.println("\n Exibir por ano de criação e nome \n");
+
+        Set<LinguagemFavorita> linguagensAnoNome = new TreeSet<>(new ComparetoAnoNome());
+        linguagensAnoNome.addAll(linguagens);
+
+        System.out.println("Exibindo ordenado por ano/nome \n");
+        for(LinguagemFavorita ling: linguagensAnoNome) System.out.println(ling.getNome() + " - " + ling.getAnoDeCriacao() + " - " + ling.getIde());
 
     }
 
@@ -153,5 +168,18 @@ class ComparetoIDE implements Comparator<LinguagemFavorita>{
     public int compare(LinguagemFavorita o1, LinguagemFavorita o2) {
         int compareIde = o1.getIde().compareTo(o2.getIde());
         return compareIde;
+    }
+}
+
+class ComparetoAnoNome implements Comparator<LinguagemFavorita>{
+
+    @Override
+    public int compare(LinguagemFavorita o1, LinguagemFavorita o2) {
+        int ano = Integer.compare(o1.getAnoDeCriacao(), o2.getAnoDeCriacao());
+        if(ano != 0) return ano;
+
+        int nome = o1.getNome().compareTo(o2.getNome());
+        return nome;
+
     }
 }
